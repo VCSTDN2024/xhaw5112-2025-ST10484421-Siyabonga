@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+Name: Siyabonga Msezane
+ST10484421
+Link to github repo:https://github.com/VCSTDN2024/xhaw5112-2025-ST10484421-Siyabonga
 # Sample Snack app
 
 Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
