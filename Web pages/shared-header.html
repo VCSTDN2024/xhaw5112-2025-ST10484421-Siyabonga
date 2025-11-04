@@ -1,0 +1,113 @@
+<!-- Shared Header Styles -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    :root{
+        --primary-blue: #2563eb; /* blue-600 */
+        --primary-blue-dark: #1e40af; /* blue-800 */
+        --gold: #D4AF37;
+        --muted-gray: #e5e7eb;
+    }
+    body {
+        font-family: 'Inter', sans-serif;
+        /* page gradient: white -> blue -> gold -> grey */
+        background: linear-gradient(180deg, #ffffff 0%, var(--primary-blue) 35%, var(--gold) 70%, var(--muted-gray) 100%);
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+    }
+
+    .site-header{
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        padding: 0.75rem 0;
+    }
+
+    .site-logo {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--primary-blue);
+        text-decoration: none;
+        white-space: nowrap;
+        line-height: 1.1;
+    }
+
+    .nav-link{
+        color: rgba(0,0,0,0.75);
+        font-weight: 600;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: color 0.15s ease, background-color 0.15s ease;
+        text-decoration: none;
+    }
+    .nav-link:hover{ color: var(--primary-blue); background: rgba(255,255,255,0.4); }
+    .nav-link.active { color: var(--primary-blue); background: rgba(37, 99, 235, 0.1); }
+
+    .btn-auth{
+        color: var(--primary-blue);
+        border: 1px solid var(--primary-blue);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        transition: background-color 0.15s ease, color 0.15s ease;
+        background: transparent;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-auth:hover{ background: var(--primary-blue); color: white; }
+
+    .btn-gold{
+        background: var(--gold);
+        color: #111827;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-gold:hover{ filter: brightness(0.95); }
+
+    /* Container for page content */
+    .page-container {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    /* Content card style */
+    .content-card {
+        background: rgba(255,255,255,0.9);
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+</style>
+
+<!-- Shared Header HTML -->
+<header class="site-header">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4">
+        <a href="Home.html" class="flex items-center space-x-3 site-logo">
+            <img src="../media/logo.jpg" alt="logo" class="h-12 w-12 rounded-full object-cover" />
+            <span>Empowering<br>the Nation</span>
+        </a>
+
+        <nav class="hidden md:flex space-x-3 items-center">
+            <a href="Home.html" class="nav-link">Home</a>
+            <a href="Home.html#learnerships" class="nav-link">Learnerships</a>
+            <a href="Home.html#short-courses" class="nav-link">Short Courses</a>
+            <a href="QuoteBuilder.html" class="nav-link">Get a Quote</a>
+            <a href="AboutUs.html" class="nav-link">About Us</a>
+            <a href="ContactUs.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="login.html" class="btn-auth">Login</a>
+            <a href="Register.html" class="btn-gold">Register</a>
+        </div>
+    </div>
+</header>

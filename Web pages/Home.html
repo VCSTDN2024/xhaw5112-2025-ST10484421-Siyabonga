@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include shared header styles -->
+    <link rel="stylesheet" href="shared-header.css">
+    <style>
+        /* Page specific styles */
+
+        .hero-section {
+            background: transparent;
+            padding: 3rem 1.5rem;
+            color: var(--primary-blue-dark);
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-top: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .card-container {
+            display: grid;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .course-card {
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .card-fees {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .card-type {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (min-width: 640px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- header -->
+    <header class="site-header">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+            <a href="Home.html" class="flex items-center space-x-3">
+                <img src="../media/logo.jpg" alt="logo" class="h-10 w-10 rounded-full object-cover" />
+                <span class="font-bold text-xl" style="color:var(--primary-blue)">Empowering the Nation</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-2 items-center">
+                <a href="Home.html" class="nav-link">Home</a>
+                <a href="#learnerships" class="nav-link">Learnerships</a>
+                <a href="#short-courses" class="nav-link">Short Courses</a>
+                <a href="QuoteBuilder.html" class="nav-link">Get a Quote</a>
+                <a href="AboutUs.html" class="nav-link">About Us</a>
+                <a href="ContactUs.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="login.html" class="btn-auth">Login</a>
+                <a href="Register.html" class="btn-gold">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <h1 class="hero-title">Empowering the Nation</h1>
+        <p class="hero-subtitle">Helping people to improve their lives through skills training</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto py-8 px-4">
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <p class="text-xl font-semibold text-gray-700 mb-4 text-center">Six-month Learnerships (12 weeks)</p>
+            <div id="learnerships" class="card-container"></div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <p class="text-xl font-semibold text-gray-700 mb-4 text-center">Six-week Short Skills Training Programmes (6 weeks)</p>
+            <div id="short-courses" class="card-container"></div>
+        </div>
+        
+        
+    </div>
+
+    <script>
+        const courses = [
+            { id: 'first-aid', title: 'First Aid', fees: 1500, type: 'learnership', purpose: 'To equip individuals with essential life-saving skills.', content: ['Basic CPR ', 'Wound care', 'Responding to emergencies'] },
+            { id: 'sewing', title: 'Sewing', fees: 1500, type: 'learnership', purpose: 'To develop practical sewing skills for personal use or business.', content: ['Machine operation', 'Basic garment construction', 'Fabric knowledge'] },
+            { id: 'landscaping', title: 'Landscaping', fees: 1500, type: 'learnership', purpose: 'To teach principles of landscape design and maintenance.', content: ['Plant selection', 'Garden design', 'Lawn maintenance'] },
+            { id: 'life-skills', title: 'Life Skills', fees: 1500, type: 'learnership', purpose: 'To empower individuals with practical skills for daily life and work.', content: ['Financial literacy', 'Communication skills', 'Problem-solving'] },
+            { id: 'child-minding', title: 'Child Minding', fees: 750, type: 'short-course', purpose: 'To provide skills for safe and effective child care.', content: ['Child safety protocols', 'Age-appropriate activities', 'First aid basics'] },
+            { id: 'cooking', title: 'Cooking', fees: 750, type: 'short-course', purpose: 'To teach basic cooking skills and kitchen hygiene.', content: ['Meal preparation', 'Food safety', 'Cooking techniques'] },
+            { id: 'garden-maintenance', title: 'Garden Maintenance', fees: 750, type: 'short-course', purpose: 'To equip individuals with skills for garden upkeep.', content: ['Pruning and planting', 'Pest control', 'Water management'] }
+        ];
+
+        function renderCourses() {
+            const learnershipsContainer = document.getElementById('learnerships');
+            const shortCoursesContainer = document.getElementById('short-courses');
+
+            courses.forEach(course => {
+                const card = document.createElement('a');
+                card.href = `coursedetails.html?id=${course.id}`;
+                card.className = 'course-card p-6 flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <img src="../media/${course.id}.png" alt="${course.title}" class="w-full h-40 object-cover rounded mb-4" onerror="this.onerror=null;this.src='../media/logo.jpg'" loading="lazy" />
+                        <h2 class="card-title">${course.title}</h2>
+                        <p class="card-fees mt-1">R${course.fees}</p>
+                    </div>
+                    <p class="card-type mt-2">${course.type.replace('-', ' ')}</p>
+                `;
+                if (course.type === 'learnership') {
+                    learnershipsContainer.appendChild(card);
+                } else {
+                    shortCoursesContainer.appendChild(card);
+                }
+            });
+        }
+        
+        window.onload = renderCourses;
+    </script>
+    <div id="footer-container"></div>
+    <script>
+        
+        fetch('shared-footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-container').innerHTML = html;
+            })
+            .catch(() => {
+                
+                document.getElementById('footer-container').innerHTML = `
+<style>
+    :root{ --primary-blue: #2563eb; }
+    .site-footer{
+        background: rgba(255,255,255,0.95);
+        border-top: 1px solid rgba(0,0,0,0.06);
+        padding: 1rem 0;
+        margin-top: 2rem;
+    }
+    .site-footer .social-icons a{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        color: rgba(0,0,0,0.85);
+        transition: background-color 0.15s ease, transform 0.12s ease;
+        text-decoration: none;
+    }
+    .site-footer .social-icons a:hover{
+        background: rgba(37,99,235,0.08);
+        transform: translateY(-2px);
+        color: var(--primary-blue);
+    }
+    .site-footer .social-icons svg{ width:20px; height:20px; display:block; fill:currentColor; stroke:none; }
+    @media (max-width: 640px){
+        .site-footer .footer-inner{ flex-direction: column; gap: 0.75rem; align-items: center; }
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="max-w-6xl mx-auto px-4 footer-inner flex items-center justify-between">
+        <div class="text-sm text-gray-700">© 2025 Empowering the Nation</div>
+
+        <div class="flex items-center space-x-4 social-icons" aria-label="Social links">
+            <a href="https://www.facebook.com/share/14Qm4aEndwB/" target="_blank" rel="noopener noreferrer" aria-label="Empowering the Nation on Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.01 3.66 9.16 8.44 9.93v-7.03H8.09v-2.9h2.35V9.41c0-2.33 1.38-3.61 3.5-3.61.99 0 2.03.18 2.03.18v2.23h-1.14c-1.12 0-1.47.7-1.47 1.42v1.71h2.5l-.4 2.9h-2.1V22C18.34 21.23 22 17.08 22 12.07z"></path>
+                </svg>
+            </a>
+
+            <a href="https://x.com/empowering83378?t=h8k_neAcqymiogZmZnyK8Q&s=08" target="_blank" rel="noopener noreferrer" aria-label="Empowering the Nation on X" title="X">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M21.36 5.27c.15-.95-.21-1.63-1.06-1.63-.49 0-1.02.17-1.66.51-1.35.66-2.64 1.03-3.87 1.12-1.19.09-2.17.05-2.95-.14-.82-.2-1.15-.6-1.15-1.22 0-.31.09-.66.27-1.06L9.4 2.03C9.14 2.01 8.82 2 8.47 2 6.92 2 5.88 3.03 5.88 4.62c0 1.06.49 1.84 1.46 2.36-.42 0-.95-.07-1.58-.21-.56-.12-1.15-.18-1.74-.18v.01c0 1.9 1.36 3.59 3.21 4.06-.41.11-.84.17-1.27.17-.31 0-.61-.03-.9-.09.62 2.01 2.44 3.47 4.59 3.51-1.68 1.32-3.8 2.11-6.07 2.11-.39 0-.77-.02-1.14-.07 2.23 1.46 4.88 2.31 7.73 2.31 9.24 0 14.3-7.67 14.3-14.32 0-.22 0-.44-.02-.65.98-.72 1.82-1.62 2.49-2.65z"></path>
+                </svg>
+            </a>
+
+            <a href="https://www.instagram.com/3mpo.weringthenation?utm_source=qr&igsh=MW03MjBrN3o1Z2NuNQ==" target="_blank" rel="noopener noreferrer" aria-label="Empowering the Nation on Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM18.5 6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+                `;
+            });
+    </script>
+</body>
+</html>
